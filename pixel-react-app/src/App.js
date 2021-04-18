@@ -24,6 +24,13 @@ export default class App extends Component {
     }
   }
 
+  fillStep = (e) => {
+    e.preventDefault()
+
+    let thisID = e.target.id
+    console.log(`${thisID} clicked`)
+    document.getElementById(`${thisID}`).classList.toggle('clickedStep')
+  }
 
 
   render() {
@@ -34,6 +41,7 @@ export default class App extends Component {
         sessions={this.state.sessions}
         steps={this.state.steps}
         reps={this.state.reps}
+        fillStep={this.fillStep}
         />
       </div>
     )
