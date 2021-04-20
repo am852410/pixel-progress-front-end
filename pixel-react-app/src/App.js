@@ -24,6 +24,10 @@ export default class App extends Component {
     }
   }
 
+  fillStep = (e) => {
+    e.preventDefault()
+    document.getElementById(`${e.target.id}`).classList.toggle('clickedStep')
+  }
 
 
   render() {
@@ -34,6 +38,7 @@ export default class App extends Component {
         sessions={this.state.sessions}
         steps={this.state.steps}
         reps={this.state.reps}
+        fillStep={this.fillStep}
         />
       </div>
     )

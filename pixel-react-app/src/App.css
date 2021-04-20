@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Oxygen:wght@300&display=swap');
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,77 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  text-transform: uppercase;
+}
+
+
+h1 {
+  color:gray;
+}
+
+td {
+  color:lightgray;
+  border: 5px solid lightblue;
+  height: 40px;
+  width: 40px;
+
+  overflow: hidden;
+
+}
+
+td:before {
+
+}
+
+@keyframes fill {
+  from {
+    background-color: lightgray;
+
+  }
+  to {
+    background-color: cyan;
+
+
+  }
+}
+
+.clickedStep {
+  color:lightgray;
+  background-color: cyan;
+  transition: .5s;
+  animation: fill 1s ease-in-out;
+
+}
+
+td:hover {
+  border: 5px solid lightgray;
+  transition: .2s
+}
+
+th {
+  color:lightblue;
+}
+
+th.rotate {
+  color: lightgray;
+  height: 40px;
+  white-space: nowrap;
+  transform:rotate(-40deg);
+  font-size: 8px;
+}
+
+colgroup {
+  border: 5px solid red;
+}
+
+#hide {
+  border: none;
+}
+
+.reps {
+  width: 100px;
 }
