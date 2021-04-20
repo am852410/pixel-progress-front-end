@@ -26,10 +26,7 @@ export default class App extends Component {
 
   fillStep = (e) => {
     e.preventDefault()
-
-    let thisID = e.target.id
-    console.log(`${thisID} clicked`)
-    document.getElementById(`${thisID}`).classList.toggle('clickedStep')
+    document.getElementById(`${e.target.id}`).classList.toggle('clickedStep')
   }
 
 

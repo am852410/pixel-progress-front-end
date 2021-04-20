@@ -52,15 +52,40 @@ h1 {
 td {
   color:lightgray;
   border: 5px solid lightblue;
-  height: 100px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 
+  overflow: hidden;
+
+}
+
+td:before {
+
+}
+
+@keyframes fill {
+  from {
+    background-color: lightgray;
+
+  }
+  to {
+    background-color: cyan;
+
+
+  }
 }
 
 .clickedStep {
   color:lightgray;
   background-color: cyan;
+  transition: .5s;
+  animation: fill 1s ease-in-out;
 
+}
+
+td:hover {
+  border: 5px solid lightgray;
+  transition: .2s
 }
 
 th {
@@ -69,10 +94,10 @@ th {
 
 th.rotate {
   color: lightgray;
-  height: 60px;
+  height: 40px;
   white-space: nowrap;
   transform:rotate(-40deg);
-  font-size: 10px;
+  font-size: 8px;
 }
 
 colgroup {
@@ -81,4 +106,8 @@ colgroup {
 
 #hide {
   border: none;
+}
+
+.reps {
+  width: 100px;
 }
