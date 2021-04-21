@@ -16,3 +16,5 @@ Stretch
 - User can further customize progress trackers
 - User could see % completion for overall and each type of step to show what needs improvement (ex. %65 meal prep, 95% cardio, 30% strength training - where 100% completion is the ideal for each) (ex. Have not completed a high number of labs for coding bootcamp). (ex. Tend to complete less steps on Saturday)
 
+Sources:
+Tiered and Side Table Headers: https://www.w3.org/WAI/tutorials/tables/irregular/
