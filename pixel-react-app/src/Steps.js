@@ -2,16 +2,35 @@ import React, {Component} from "react"
 import Step from "./Step"
 
 export default class Steps extends Component {
-  constructor(props) {
-    super(props)
 
-  }
   render () {
     return (
-      <div>
+      <table>
+
+      {
+        this.props.sessions.map(session => {
+          return (
+            <colgroup
+            span={this.props.sessions.length}>
+            </colgroup>
+          )
+        })
+      }
+
+      <tbody>
+      <tr>
+          <td className="hide" rowSpan="2"></td>
+          {
+            this.props.sessions.map((session, i) => {
+              return (
+                <th className="sessionHeaders" colSpan={this.props.sessions.length} scope="colgroup">{session}</th>
+              )
+            })
+          }
+      </tr>
 
       <tr>
-      <td id="hide" rowSpan="1"></td>
+
         {
           this.props.sessions.map(session => {
             return (
@@ -28,9 +47,10 @@ export default class Steps extends Component {
 
 
       {
-        this.props.reps.map((rep, r) => {
+        this.props.reps.map(rep => {
           return (
-            <div>
+
+            <tr>
             <th className="reps" scope="row">{rep}</th>
             {
               this.props.sessions.map((session, i) => {
@@ -50,12 +70,13 @@ export default class Steps extends Component {
               }
             )
             }
-            </div>
+            </tr>
+
           )
         })
       }
-
-      </div>
+      </tbody>
+      </table>
     )
   }
 }

@@ -1,18 +1,13 @@
-import React, {Component} from "react"
+import React from "react"
 
-export default class Step extends Component {
-  constructor(props) {
-    super(props)
-
-  }
-  render () {
+export default function Step (props) {
 
     return (
       <td
-        id={`${this.props.rep}-${this.props.session}-${this.props.step}`}
-        onClick={this.props.fillStep}
-      >
+        
+        id={`${props.rep}-${props.session}-${props.step}`}
+        onClick={props.fillStep}
+      >{props.session} {props.step}
       </td>
     )
-  }
 }
