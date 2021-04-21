@@ -50,18 +50,17 @@ h1 {
 }
 
 td {
-  color:lightgray;
+
   border: 5px solid lightblue;
   height: 40px;
   width: 40px;
+  font-size: 1px;
+  color:white;
 
   overflow: hidden;
 
 }
 
-td:before {
-
-}
 
 @keyframes fill {
   from {
@@ -85,29 +84,42 @@ td:before {
 
 td:hover {
   border: 5px solid lightgray;
-  transition: .2s
+  transition: .2s;
+  color: lightgray;
+  font-size: 11px;
+
+
 }
 
 th {
   color:lightblue;
 }
 
+.sessionHeaders {
+  /* border: 1px solid cyan; */
+}
+
 th.rotate {
   color: lightgray;
-  height: 40px;
+  /* height: 30px; */
   white-space: nowrap;
-  transform:rotate(-40deg);
+  /* transform:rotate(-40deg); */
   font-size: 8px;
+  text-align: center;
+  padding: 10px 0px;
+
 }
 
-colgroup {
-  border: 5px solid red;
-}
 
-#hide {
+
+.hide {
   border: none;
 }
 
 .reps {
   width: 100px;
+}
+
+.yellow {
+  background-color: yellow;
 }
