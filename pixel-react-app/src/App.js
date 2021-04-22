@@ -18,38 +18,17 @@ export default class App extends Component {
     super(props)
     this.state = {
       goals: [],
-      sessions: ['TU','WE','TH','SA'],
-      steps: ['Class','Lab','Homework','Stretch'],
-      reps: [
-        'March 30',
-        'April 6',
-        'April 13',
-        'April 20',
-        'April 27',
-        'May 4',
-        'May 11',
-        'May 18',
-        'May 25',
-        'June 1',
-        'June 8'
-      ]
     }
-    this.getGoals = this.getGoals.bind(this)
     }
-    componentDidMount(){
-  this.getGoals()
-}
-    getGoals () {
-      p('getting goals from api')
 
+    getGoals = () => {
       fetch(baseURL + '/goals')
-        .then(data => {
-          return data.json()},
-          err => console.log(err))
-        .then(parsedData => console.log(parsedData),
-         err => console.log(err))
-
-
+        .then(res => {return res.json()
+        }).then(data => {
+        this.setState({
+          goals: data,
+        })
+      })
 
   }
 
@@ -58,16 +37,31 @@ export default class App extends Component {
     document.getElementById(`${e.target.id}`).classList.toggle('clickedStep')
   }
 
+  componentDidMount(){
+this.getGoals()
+}
+
   render() {
+    p('goals in render:')
+    p(this.state.goals)
     return (
       <div className='App'>
         <h1>Pixel Progress</h1>
-        <Goal
-        sessions={this.state.sessions}
-        steps={this.state.steps}
-        reps={this.state.reps}
-        fillStep={this.fillStep}
-        />
+        {this.state.goals.map(goal => {
+          return (
+            <>
+              <Goal
+              key={`${goal.name}-goal`}
+              sessions={goal.days}
+              steps={goal.categories}
+              reps={goal.week_start_dates}
+              fillStep={this.fillStep}
+              />
+            </>
+          )
+        })}
+
+
       </div>
     )
   }
