@@ -23,7 +23,7 @@ export default class Steps extends Component {
           {
             this.props.sessions.map((session, i) => {
               return (
-                <th className="sessionHeaders" colSpan={this.props.sessions.length} scope="colgroup">{session}</th>
+                <th key={`${session}-header`} className="sessionHeaders" colSpan={this.props.sessions.length} scope="colgroup">{session}</th>
               )
             })
           }
@@ -36,7 +36,7 @@ export default class Steps extends Component {
             return (
               this.props.steps.map((step, i) => {
                 return (
-                  <th
+                  <th key={`${session}-${step}-header`}
                   className="rotate" scope="col">{step}</th>
                 )
               })

@@ -87,8 +87,6 @@ td:hover {
   transition: .2s;
   color: lightgray;
   font-size: 11px;
-
-
 }
 
 th {
@@ -113,6 +111,10 @@ th.rotate {
 
 
 .hide {
+  border: none;
+}
+
+.hide:hover {
   border: none;
 }
 
