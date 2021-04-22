@@ -10,7 +10,7 @@ export default class Steps extends Component {
       {
         this.props.sessions.map(session => {
           return (
-            <colgroup
+            <colgroup key = {`${session}-group-key`}
             span={this.props.sessions.length}>
             </colgroup>
           )
@@ -18,8 +18,8 @@ export default class Steps extends Component {
       }
 
       <tbody>
-      <tr>
-          <td className="hide" rowSpan="2"></td>
+      <tr key={'SessionHeaderRowKey'}>
+          <td className="hide" rowSpan="2" key="hiddenCell"></td>
           {
             this.props.sessions.map((session, i) => {
               return (
@@ -29,7 +29,7 @@ export default class Steps extends Component {
           }
       </tr>
 
-      <tr>
+      <tr key={'StepHeaderRowKey'}>
 
         {
           this.props.sessions.map(session => {
@@ -50,8 +50,8 @@ export default class Steps extends Component {
         this.props.reps.map(rep => {
           return (
 
-            <tr>
-            <th className="reps" scope="row">{rep}</th>
+            <tr key={`${rep}-row`}>
+            <th className="reps" scope="row" key={`${rep}-row`}>{rep}</th>
             {
               this.props.sessions.map((session, i) => {
                 return (

@@ -1,11 +1,23 @@
 import './App.css';
 import React, {Component} from "react"
 import Goal from "./Goal"
+let baseURL = ''
+const p = (x) => {console.log(x)}
+
+p(process.env.NODE_ENV)
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3003'
+} else {
+  baseURL = 'your heroku backend url here'
+}
+p(`current base URL: ${baseURL}`)
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      goals: [],
       sessions: ['TU','WE','TH','SA'],
       steps: ['Class','Lab','Homework','Stretch'],
       reps: [
@@ -22,13 +34,29 @@ export default class App extends Component {
         'June 8'
       ]
     }
+    this.getGoals = this.getGoals.bind(this)
+    }
+    componentDidMount(){
+  this.getGoals()
+}
+    getGoals () {
+      p('getting goals from api')
+
+      fetch(baseURL + '/goals')
+        .then(data => {
+          return data.json()},
+          err => console.log(err))
+        .then(parsedData => console.log(parsedData),
+         err => console.log(err))
+
+
+
   }
 
   fillStep = (e) => {
     e.preventDefault()
     document.getElementById(`${e.target.id}`).classList.toggle('clickedStep')
   }
-
 
   render() {
     return (
