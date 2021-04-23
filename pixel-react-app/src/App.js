@@ -41,6 +41,29 @@ export default class App extends Component {
     })
   }
 
+  deleteGoal = async (id) => {
+
+    const url = baseURL + "/goals/" + id
+
+    try {
+      const response = await fetch(url, {method: "DELETE"})
+
+      if (response.status === 200){
+
+        const index = this.state.goals.findIndex(goal => goal._id === id)
+        const copyGoals = [...this.state.goals]
+        copyGoals.splice(index, 1)
+        this.setState({
+          goals: copyGoals
+        })
+      }
+
+    }
+    catch(error){
+      console.log('error: ', error)
+    }
+  }
+
   fillStep = (e) => {
     e.preventDefault()
     document.getElementById(`${e.target.id}`).classList.toggle('clickedStep')
@@ -57,7 +80,8 @@ this.getGoals()
         {this.state.goals.map(goal => {
           return (
             <>
-              <h3>{goal.name}</h3>
+              <h3>{goal.name} - <span>edit</span> - <span onClick={()=>this.deleteGoal(goal._id)}>delete</span></h3>
+
               <Goal
               key={`${goal.name}-goal`}
               name={goal.name}

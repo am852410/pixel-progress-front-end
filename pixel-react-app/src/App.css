@@ -58,6 +58,14 @@ h3 {
   margin-top: 50px;
 }
 
+span {
+  text-decoration: underline;
+}
+
+span:hover {
+  color:red;
+}
+
 td {
 
   border: 5px solid lightblue;
@@ -91,8 +99,16 @@ td {
 
 }
 
-td:hover {
+/* td:hover {
   border: 5px solid lightgray;
+  transition: .2s;
+  color: lightgray;
+  font-size: 11px;
+} */
+
+td:hover {
+  /* border: 5px solid lightgray; */
+  background-color: lightgray;
   transition: .2s;
   color: lightgray;
   font-size: 11px;

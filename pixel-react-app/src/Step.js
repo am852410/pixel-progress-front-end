@@ -7,7 +7,8 @@ export default function Step (props) {
         key={`${props.rep}-${props.session}-${props.step}`}
         id={`${props.rep}-${props.session}-${props.step}`}
         onClick={props.fillStep}
-      >{props.session} {props.step}
+      >
+      
       </td>
     )
 }
