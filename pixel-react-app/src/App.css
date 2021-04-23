@@ -106,6 +106,12 @@ td {
   font-size: 11px;
 } */
 
+tr:hover {
+  background-color: rgba(50,10,50,.05);
+  transition: .2s;
+}
+
+
 td:hover {
   /* border: 5px solid lightgray; */
   background-color: lightgray;
