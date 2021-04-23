@@ -1,7 +1,16 @@
+import 'semantic-ui-css/semantic.min.css'
 import './App.css';
+
 import React, {Component} from "react"
 import Goal from "./Goal"
 import NewForm from "./NewForm"
+
+import { Button, Icon } from 'semantic-ui-react'
+
+import IconButton from "./components/IconButton"
+
+
+
 let baseURL = ''
 // const p = (x) => {console.log(x)}
 
@@ -77,10 +86,15 @@ this.getGoals()
     return (
       <div className='App'>
         <h1>Pixel Progress</h1>
+
         {this.state.goals.map(goal => {
           return (
             <>
-              <h3>{goal.name} - <span>edit</span> - <span onClick={()=>this.deleteGoal(goal._id)}>delete</span></h3>
+              <h3>{goal.name} &#160;&#160;
+              <IconButton className="IconButton" icon={'edit outline'}/>
+              <IconButton className="IconButton" icon={'trash alternate'} deleteGoal={() => {this.deleteGoal(goal._id)}}/>
+              </h3>
+
 
               <Goal
               key={`${goal.name}-goal`}
