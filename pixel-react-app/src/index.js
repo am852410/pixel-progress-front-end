@@ -1,16 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'semantic-ui-css/semantic.min.css'
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-import { Container, Header, List } from "semantic-ui-react";
-
-import pkg from 'semantic-ui-react/package.json'
-import Example from "./components/SemanticUIModal"
-
-
 
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
