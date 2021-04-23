@@ -9,6 +9,13 @@ import { Button, Icon } from 'semantic-ui-react'
 
 import IconButton from "./components/IconButton"
 
+import 'semantic-ui-css/semantic.min.css'
+import { Container, Header, List } from "semantic-ui-react";
+
+import pkg from 'semantic-ui-react/package.json'
+import CreateModal from "./components/CreateModal"
+
+
 
 
 let baseURL = ''
@@ -86,6 +93,10 @@ this.getGoals()
     return (
       <div className='App'>
         <h1>Pixel Progress</h1>
+        <CreateModal
+        addGoal={this.addGoal}
+        baseURL={baseURL}
+        />
 
         {this.state.goals.map(goal => {
           return (
