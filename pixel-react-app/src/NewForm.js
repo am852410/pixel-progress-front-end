@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-const p = (x) => {console.log(x)}
+// const p = (x) => {console.log(x)}
 
 export default class NewForm extends Component {
     constructor(props) {
@@ -37,20 +37,20 @@ export default class NewForm extends Component {
         return res.json()
       }).then(data => {
         this.props.addGoal(data)
-        // this.setState({
-        //   name: '',
-        //   type: '',
-        //   days: '',
-        //   week_start_dates: '',
-        //   categories: ''
-        // })
+        this.setState({
+          name: '',
+          type: '',
+          days: '',
+          week_start_dates: '',
+          steps: ''
+        })
       }).catch (error => console.error({'Error': error}))
     }
 
 
 
     render () {
-      p(this.state)
+
       return (
 
         <form onSubmit= {(e)=>this.handleSubmit(e)}>
