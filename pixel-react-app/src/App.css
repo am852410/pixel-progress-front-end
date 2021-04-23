@@ -45,8 +45,17 @@ body {
 }
 
 
+
+
 h1 {
   color:gray;
+}
+
+h3 {
+  text-align: left;
+  color: lightgray;
+  margin-left: 10px;
+  margin-top: 50px;
 }
 
 td {
