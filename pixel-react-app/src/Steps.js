@@ -64,6 +64,7 @@ export default class Steps extends Component {
                       step={step}
                       fillStep={this.props.fillStep}
 
+
                       />
                       )
                   })

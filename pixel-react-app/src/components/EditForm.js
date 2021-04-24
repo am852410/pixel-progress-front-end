@@ -27,7 +27,8 @@ class FormExampleCaptureValues extends Component {
       }),
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: "include"
     })
     this.props.getGoals()
     this.props.closeModal()

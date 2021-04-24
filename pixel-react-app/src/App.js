@@ -36,11 +36,15 @@ export default class App extends Component {
     super(props)
     this.state = {
       goals: [],
+      userLoggedIn: false
+
     }
     }
 
     getGoals = () => {
-      fetch(baseURL + '/goals')
+      fetch(baseURL + '/goals',{
+        credentials: "include"
+      })
         .then(res => {return res.json()
         }).then(data => {
         this.setState({
@@ -79,6 +83,34 @@ export default class App extends Component {
     document.getElementById(`${e.target.id}`).classList.toggle('clickedStep')
   }
 
+
+
+  register = async (e) => {
+  e.preventDefault()
+  const url = baseURL + '/users/signup'
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        name: e.target.name.value,
+        username: e.target.username.value,
+        password: e.target.password.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    if (response.status === 200) {
+      this.getGoals()
+    }
+  }
+  catch (err) {
+    console.log('Error => ', err);
+  }
+}
+
+
+
   componentDidMount(){
 this.getGoals()
 }
@@ -86,8 +118,11 @@ this.getGoals()
   render() {
     return (
       <div className='App'>
+        <LoginModal
+        baseURL={baseURL} 
+        register={this.register}/>
         <h1>Pixel Progress</h1>
-        <LoginModal />
+
         <br/><br/>
         <CreateModal
         getGoals={this.getGoals}
@@ -120,6 +155,7 @@ this.getGoals()
               steps={goal.categories}
               reps={goal.week_start_dates}
               fillStep={this.fillStep}
+
               />
             </>
           )
