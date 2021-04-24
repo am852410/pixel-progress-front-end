@@ -16,17 +16,7 @@ import CreateModal from "./components/CreateModal";
 import EditModal from "./components/EditModal";
 import LoginModal from "./components/LoginModal";
 
-let baseURL = "";
-// const p = (x) => {console.log(x)}
-
-// p(process.env.NODE_ENV)
-
-if (process.env.NODE_ENV === "development") {
-  baseURL = "http://localhost:3003";
-} else {
-  baseURL = "https://pixel-progress-back-end.herokuapp.com";
-}
-// p(`current base URL: ${baseURL}`)
+let baseURL = "https://pixel-progress-back-end.herokuapp.com";
 
 export default class App extends Component {
   constructor(props) {
@@ -80,7 +70,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Pixel Progress</h1>
-        <LoginModal baseURL={baseURL} />
+        <LoginModal baseURL={baseURL} getGoals={this.getGoals} />
         <br />
         <br />
         <CreateModal getGoals={this.getGoals} baseURL={baseURL} />
