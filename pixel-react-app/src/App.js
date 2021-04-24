@@ -1,23 +1,22 @@
-import 'semantic-ui-css/semantic.min.css'
-import './App.css';
+import "semantic-ui-css/semantic.min.css";
+import "./App.css";
 
-import React, {Component} from "react"
-import Goal from "./Goal"
+import React, { Component } from "react";
+import Goal from "./Goal";
 
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon } from "semantic-ui-react";
 
-import IconButton from "./components/IconButton"
+import IconButton from "./components/IconButton";
 
-import 'semantic-ui-css/semantic.min.css'
+import "semantic-ui-css/semantic.min.css";
 import { Container, Header, List } from "semantic-ui-react";
 
-import pkg from 'semantic-ui-react/package.json'
-import CreateModal from "./components/CreateModal"
-import EditModal from "./components/EditModal"
-import LoginModal from "./components/LoginModal"
+import pkg from "semantic-ui-react/package.json";
+import CreateModal from "./components/CreateModal";
+import EditModal from "./components/EditModal";
+import LoginModal from "./components/LoginModal";
 
-
-let baseURL = 'https://pixel-progress-back-end.herokuapp.com/'
+let baseURL = "https://pixel-progress-back-end.herokuapp.com";
 // const p = (x) => {console.log(x)}
 
 // p(process.env.NODE_ENV)
@@ -31,109 +30,98 @@ let baseURL = 'https://pixel-progress-back-end.herokuapp.com/'
 
 export default class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       goals: [],
       userLoggedIn: false
-
-    }
-    }
-
-    getGoals = () => {
-      fetch(baseURL + '/goals',{
-        credentials: "include"
-      })
-        .then(res => {return res.json()
-        }).then(data => {
-        this.setState({
-          goals: data,
-        })
-      })
-
+    };
   }
 
+  getGoals = () => {
+    fetch(baseURL + "/goals", {
+      credentials: "include"
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        this.setState({
+          goals: data
+        });
+      });
+  };
 
-  deleteGoal = async (id) => {
-
-    const url = baseURL + "/goals/" + id
+  deleteGoal = async id => {
+    const url = baseURL + "/goals/" + id;
 
     try {
-      const response = await fetch(url, {method: "DELETE"})
+      const response = await fetch(url, { method: "DELETE" });
 
-      if (response.status === 200){
-
-        const index = this.state.goals.findIndex(goal => goal._id === id)
-        const copyGoals = [...this.state.goals]
-        copyGoals.splice(index, 1)
+      if (response.status === 200) {
+        const index = this.state.goals.findIndex(goal => goal._id === id);
+        const copyGoals = [...this.state.goals];
+        copyGoals.splice(index, 1);
         this.setState({
           goals: copyGoals
-        })
+        });
       }
-
+    } catch (error) {
+      console.log("error: ", error);
     }
-    catch(error){
-      console.log('error: ', error)
-    }
-  }
+  };
 
-  fillStep = (e) => {
-    e.preventDefault()
-    document.getElementById(`${e.target.id}`).classList.toggle('clickedStep')
-  }
+  fillStep = e => {
+    e.preventDefault();
+    document.getElementById(`${e.target.id}`).classList.toggle("clickedStep");
+  };
 
-  componentDidMount(){
-this.getGoals()
-}
+  componentDidMount() {
+    this.getGoals();
+  }
 
   render() {
     return (
-      <div className='App'>
-        <LoginModal
-        baseURL={baseURL}
-        register={this.register}/>
+      <div className="App">
+        <LoginModal baseURL={baseURL} register={this.register} />
         <h1>Pixel Progress</h1>
 
-        <br/><br/>
-        <CreateModal
-        getGoals={this.getGoals}
-        baseURL={baseURL}
-        />
+        <br />
+        <br />
+        <CreateModal getGoals={this.getGoals} baseURL={baseURL} />
 
         {this.state.goals.map(goal => {
           return (
             <>
-              <h3>{goal.name} &#160;&#160;
-              <EditModal
-                className="IconButton"
-                getGoals={this.getGoals}
-                baseURL={baseURL}
-                goal={goal}
-                goals={this.state.goals}
+              <h3>
+                {goal.name} &#160;&#160;
+                <EditModal
+                  className="IconButton"
+                  getGoals={this.getGoals}
+                  baseURL={baseURL}
+                  goal={goal}
+                  goals={this.state.goals}
                 />
-
-              <IconButton
-                className="IconButton"
-                icon={'trash alternate'}
-                actionFunction={() => {this.deleteGoal(goal._id)}}/>
+                <IconButton
+                  className="IconButton"
+                  icon={"trash alternate"}
+                  actionFunction={() => {
+                    this.deleteGoal(goal._id);
+                  }}
+                />
               </h3>
 
-
               <Goal
-              key={`${goal.name}-goal`}
-              name={goal.name}
-              sessions={goal.days}
-              steps={goal.categories}
-              reps={goal.week_start_dates}
-              fillStep={this.fillStep}
-
+                key={`${goal.name}-goal`}
+                name={goal.name}
+                sessions={goal.days}
+                steps={goal.categories}
+                reps={goal.week_start_dates}
+                fillStep={this.fillStep}
               />
             </>
-          )
+          );
         })}
-
-
-
       </div>
-    )
+    );
   }
 }
