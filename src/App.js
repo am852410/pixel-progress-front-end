@@ -80,7 +80,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Pixel Progress</h1>
-        <LoginModal />
+        <LoginModal baseURL={baseURL} />
         <br />
         <br />
         <CreateModal getGoals={this.getGoals} baseURL={baseURL} />
