@@ -14,6 +14,7 @@ import { Container, Header, List } from "semantic-ui-react";
 import pkg from 'semantic-ui-react/package.json'
 import CreateModal from "./components/CreateModal"
 import EditModal from "./components/EditModal"
+import LoginModal from "./components/LoginModal"
 
 
 
@@ -86,6 +87,8 @@ this.getGoals()
     return (
       <div className='App'>
         <h1>Pixel Progress</h1>
+        <LoginModal />
+        <br/><br/>
         <CreateModal
         getGoals={this.getGoals}
         baseURL={baseURL}
