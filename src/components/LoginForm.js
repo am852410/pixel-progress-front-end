@@ -11,7 +11,6 @@ export default class Login extends Component {
 
   handleChange = (e, { name, value }) => {
     this.setState({ [name] : value });
-    console.log(this.state)
   }
 
   loggingUser = async (e) => {
@@ -74,6 +73,7 @@ export default class Login extends Component {
           <Grid.Column verticalAlign='middle'>
             <Register
             getGoals={this.props.getGoals}
+            baseURL={this.props.baseURL}
             />
           </Grid.Column>
         </Grid>
