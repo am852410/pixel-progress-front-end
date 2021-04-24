@@ -17,18 +17,16 @@ import EditModal from "./components/EditModal"
 import LoginModal from "./components/LoginModal"
 
 
-
-
-let baseURL = ''
+let baseURL = 'https://pixel-progress-back-end.herokuapp.com/'
 // const p = (x) => {console.log(x)}
 
 // p(process.env.NODE_ENV)
 
-if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:3003'
-} else {
-  baseURL = 'your heroku backend url here'
-}
+// if (process.env.NODE_ENV === 'development') {
+//   baseURL = 'http://localhost:3003'
+// } else {
+//   baseURL =  'your heroku backend url here'
+// }
 // p(`current base URL: ${baseURL}`)
 
 export default class App extends Component {
@@ -83,34 +81,6 @@ export default class App extends Component {
     document.getElementById(`${e.target.id}`).classList.toggle('clickedStep')
   }
 
-
-
-  register = async (e) => {
-  e.preventDefault()
-  const url = baseURL + '/users/signup'
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        name: e.target.name.value,
-        username: e.target.username.value,
-        password: e.target.password.value
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    if (response.status === 200) {
-      this.getGoals()
-    }
-  }
-  catch (err) {
-    console.log('Error => ', err);
-  }
-}
-
-
-
   componentDidMount(){
 this.getGoals()
 }
@@ -119,7 +89,7 @@ this.getGoals()
     return (
       <div className='App'>
         <LoginModal
-        baseURL={baseURL} 
+        baseURL={baseURL}
         register={this.register}/>
         <h1>Pixel Progress</h1>
 

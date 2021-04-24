@@ -20,6 +20,7 @@ export default function LoginModal(props) {
       <Modal.Content>
             <RegisterForm
             closeModal={() => setOpen(false)}
+            baseURL={props.baseURL}
 
             />
       </Modal.Content>
