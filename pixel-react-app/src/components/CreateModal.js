@@ -17,24 +17,17 @@ function CreateModal(props) {
 
       <Modal.Content>
             <CreateForm
-            addGoal={props.addGoal}
+            getGoals={props.getGoals}
             baseURL={props.baseURL}
+            closeModal={() => setOpen(false)}
 
             />
       </Modal.Content>
 
 
       <Modal.Actions>
-        <Button color='black' onClick={() => setOpen(false)}>
-          Nevermind
-        </Button>
-        <Button
-          content="Looks good!"
-          labelPosition='right'
-          icon='checkmark'
-          onClick={() => setOpen(false)}
-          positive
-        />
+
+
       </Modal.Actions>
     </Modal>
   )

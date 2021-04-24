@@ -3,7 +3,6 @@ import './App.css';
 
 import React, {Component} from "react"
 import Goal from "./Goal"
-import NewForm from "./NewForm"
 
 import { Button, Icon } from 'semantic-ui-react'
 
@@ -14,6 +13,7 @@ import { Container, Header, List } from "semantic-ui-react";
 
 import pkg from 'semantic-ui-react/package.json'
 import CreateModal from "./components/CreateModal"
+import EditModal from "./components/EditModal"
 
 
 
@@ -49,13 +49,6 @@ export default class App extends Component {
 
   }
 
-  addGoal = (newGoal) => {
-    const copyGoals = [...this.state.goals]
-    copyGoals.push(newGoal)
-    this.setState({
-      goals: copyGoals,
-    })
-  }
 
   deleteGoal = async (id) => {
 
@@ -94,7 +87,7 @@ this.getGoals()
       <div className='App'>
         <h1>Pixel Progress</h1>
         <CreateModal
-        addGoal={this.addGoal}
+        getGoals={this.getGoals}
         baseURL={baseURL}
         />
 
@@ -102,8 +95,18 @@ this.getGoals()
           return (
             <>
               <h3>{goal.name} &#160;&#160;
-              <IconButton className="IconButton" icon={'edit outline'}/>
-              <IconButton className="IconButton" icon={'trash alternate'} deleteGoal={() => {this.deleteGoal(goal._id)}}/>
+              <EditModal
+                className="IconButton"
+                getGoals={this.getGoals}
+                baseURL={baseURL}
+                goal={goal}
+                goals={this.state.goals}
+                />
+
+              <IconButton
+                className="IconButton"
+                icon={'trash alternate'}
+                actionFunction={() => {this.deleteGoal(goal._id)}}/>
               </h3>
 
 
@@ -119,12 +122,7 @@ this.getGoals()
           )
         })}
 
-        <br/>
-        <NewForm
-          addGoal={this.addGoal}
-          baseURL={baseURL}
-        />
-        <br/>
+
 
       </div>
     )
