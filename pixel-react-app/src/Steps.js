@@ -18,25 +18,25 @@ export default class Steps extends Component {
       }
 
       <tbody>
-      <tr key={'SessionHeaderRowKey'}>
+      <tr>
           <td className="hide" rowSpan="2" key="hiddenCell"></td>
           {
             this.props.sessions.map((session, i) => {
               return (
-                <th key={`${session}-header`} className="sessionHeaders" colSpan={this.props.steps.length} scope="colgroup">{session}</th>
+                <th key={`${i}-header`} className="sessionHeaders" colSpan={this.props.steps.length} scope="colgroup">{session}</th>
               )
             })
           }
       </tr>
 
-      <tr key={'StepHeaderRowKey'}>
+      <tr>
 
         {
-          this.props.sessions.map(session => {
+          this.props.sessions.map((session, s) => {
             return (
               this.props.steps.map((step, i) => {
                 return (
-                  <th key={`${session}-${step}-header`}
+                  <th key={`${s}-${i}-header`}
                   className="rotate" scope="col">{step}</th>
                 )
               })
@@ -47,17 +47,18 @@ export default class Steps extends Component {
 
 
       {
-        this.props.reps.map(rep => {
+        this.props.reps.map((rep, r) => {
           return (
 
-            <tr key={`${rep}-row`}>
-            <th className="reps" scope="row" key={`${rep}-row`}>{rep}</th>
+            <tr key={`${r}-row`}>
+            <th className="reps" scope="row" key={`${r}-row-header`}>{rep}</th>
             {
               this.props.sessions.map((session, i) => {
                 return (
                   this.props.steps.map((step, j) => {
                     return (
                       <Step
+                      key={`${r}-${i}-${j}`}
                       rep={rep}
                       session={session}
                       step={step}

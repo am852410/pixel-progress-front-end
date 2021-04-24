@@ -1,19 +1,25 @@
 import React, {Component} from "react"
-import { Message, Form, Checkbox, Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Form, Checkbox, Button, Header, Image, Modal } from 'semantic-ui-react'
 
 class FormExampleCaptureValues extends Component {
-  state = { name: '', days: '', steps: '', week_start_dates: '' }
+  constructor(props) {
+    super(props)
+  }
+  state = { name: this.props.goal.name, days: this.props.goal.days, steps: this.props.goal.categories, week_start_dates: this.props.goal.week_start_dates }
+
 
   handleChange = (e, { name, value }) => this.setState({ [name] : value.includes(',') ? value.split(',') : value })
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
+    const url = this.props.baseURL + '/goals/' + this.props.goal._id
 
-    fetch(this.props.baseURL + '/goals', {
-      method: 'POST',
+    const response = await
+
+    fetch(url, {
+      method: 'PUT',
       body: JSON.stringify({
         name: this.state.name,
-        type: this.state.type,
         days: this.state.days,
         week_start_dates: this.state.week_start_dates,
         categories: this.state.steps,
@@ -59,10 +65,10 @@ class FormExampleCaptureValues extends Component {
               value={week_start_dates}
               onChange={this.handleChange}
             />
-
             <Form.Button content='Submit' />
 
         </Form>
+
 
       </div>
     )
