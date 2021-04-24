@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal } from "semantic-ui-react";
+import { Modal, Button } from "semantic-ui-react";
 import RegisterForm from "./RegisterForm";
 
 export default function LoginModal(props) {
