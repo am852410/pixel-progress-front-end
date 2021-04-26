@@ -17,7 +17,7 @@ function CreateModal(props) {
 
       <Modal.Content>
             <CreateForm
-            getGoals={props.getGoals}
+            getGoals={() => props.getGoals()}
             baseURL={props.baseURL}
             closeModal={() => setOpen(false)}
 
