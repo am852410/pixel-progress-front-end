@@ -32,7 +32,7 @@ export default class Login extends Component {
       });
 
       if (response.status === 200) {
-        console.log(`response success`)
+        console.log(`login form success`)
         this.props.getGoals();
       } else {
         console.log(response.status)
