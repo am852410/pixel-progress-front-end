@@ -14,11 +14,14 @@ export default class Login extends Component {
     console.log(this.state);
     e.preventDefault();
     const url = this.props.baseURL + "/users/login";
+    // const url = this.props.baseURL + "/sessions/new";
+    console.log(`login URL: ${url}`)
     const loginBody = {
       username: this.state.username,
       password: this.state.password
     };
     try {
+      console.log(loginBody)
       const response = await fetch(url, {
         method: "POST",
         body: JSON.stringify(loginBody),
@@ -29,11 +32,15 @@ export default class Login extends Component {
       });
 
       if (response.status === 200) {
+        console.log(`response success`)
         this.props.getGoals();
+      } else {
+        console.log(response.status)
       }
     } catch (err) {
       console.log("Error => ", err);
     }
+    this.props.closeModal()
   };
 
   render() {
@@ -67,6 +74,7 @@ export default class Login extends Component {
             <Register
               getGoals={this.props.getGoals}
               baseURL={this.props.baseURL}
+              closeModal={this.props.closeModal}
             />
           </Grid.Column>
         </Grid>

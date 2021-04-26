@@ -4,19 +4,16 @@ import "./App.css";
 import React, { Component } from "react";
 import Goal from "./Goal";
 
-import { Button, Icon } from "semantic-ui-react";
-
 import IconButton from "./components/IconButton";
 
 import "semantic-ui-css/semantic.min.css";
-import { Container, Header, List } from "semantic-ui-react";
 
-import pkg from "semantic-ui-react/package.json";
 import CreateModal from "./components/CreateModal";
 import EditModal from "./components/EditModal";
 import LoginModal from "./components/LoginModal";
 
-let baseURL = "https://pixel-progress-back-end.herokuapp.com";
+// let baseURL = "https://pixel-progress-back-end.herokuapp.com";
+let baseURL = "http://localhost:3003"
 
 export default class App extends Component {
   constructor(props) {
@@ -75,10 +72,10 @@ export default class App extends Component {
         <br />
         <CreateModal getGoals={this.getGoals} baseURL={baseURL} />
 
-        {this.state.goals.map(goal => {
+        {this.state.goals.map((goal, g) => {
           return (
             <>
-              <h3>
+              <h3 key={`${g}-h3`}>
                 {goal.name} &#160;&#160;
                 <EditModal
                   className="IconButton"

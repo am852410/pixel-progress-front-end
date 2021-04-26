@@ -33,11 +33,7 @@ class FormExampleCaptureValues extends Component {
       name,
       days,
       steps,
-      week_start_dates,
-      submittedName,
-      submittedDays,
-      submittedSteps,
-      submittedWeek_start_dates
+      week_start_dates
     } = this.state;
 
     return (
