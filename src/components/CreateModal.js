@@ -1,5 +1,5 @@
 import React from "react"
-import { Form, Checkbox, Button, Header, Image, Modal } from 'semantic-ui-react'
+import {  Button, Modal } from 'semantic-ui-react'
 import CreateForm from "./CreateForm"
 
 function CreateModal(props) {

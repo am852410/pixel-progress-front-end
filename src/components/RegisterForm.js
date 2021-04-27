@@ -9,9 +9,10 @@ export default class Register extends Component {
   };
 
   register = async e => {
+    e.preventDefault();
     console.log("register function");
     console.log(this.state);
-    e.preventDefault();
+
     const url = this.props.baseURL + "/users/signup";
     const registerBody = {
       name: this.state.name,
@@ -19,6 +20,9 @@ export default class Register extends Component {
       password: this.state.password
     };
     try {
+      console.log(`try user registration`)
+      console.log(registerBody)
+      console.log(url)
       const response = await fetch(url, {
         method: "POST",
         body: JSON.stringify(registerBody),
@@ -27,11 +31,15 @@ export default class Register extends Component {
         }
       });
       if (response.status === 200) {
+        console.log('response succeeded');
         this.props.getGoals();
+      } else {
+        console.log(response.status)
       }
     } catch (err) {
       console.log("Error => ", err);
     }
+    this.props.closeModal()
   };
 
   render() {
