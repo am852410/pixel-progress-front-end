@@ -35,6 +35,11 @@ export default class App extends Component {
       });
   };
 
+  logOut = () => {
+    console.log(`logging out now`)
+    fetch(baseURL + "/logout")
+}
+
   deleteGoal = async id => {
     const url = baseURL + "/goals/" + id;
 
@@ -68,6 +73,13 @@ export default class App extends Component {
       <div className="App">
         <h1>Pixel Progress</h1>
         <LoginModal baseURL={baseURL} getGoals={this.getGoals} />
+        <IconButton
+          className="IconButton"
+          icon={"sign-out"}
+          actionFunction={() => {
+            this.logOut()
+          }}
+        />
         <br />
         <br />
         <CreateModal getGoals={this.getGoals} baseURL={baseURL} />

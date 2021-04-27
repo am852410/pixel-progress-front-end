@@ -7,7 +7,7 @@ class FormExampleCaptureValues extends Component {
   handleChange = (e, { name, value }) =>
     this.setState({ [name]: value.includes(",") ? value.split(",") : value });
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
 
     fetch(this.props.baseURL + "/goals", {
