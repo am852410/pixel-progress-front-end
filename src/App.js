@@ -12,8 +12,8 @@ import CreateModal from "./components/CreateModal";
 import EditModal from "./components/EditModal";
 import LoginModal from "./components/LoginModal";
 
-// let baseURL = "https://pixel-progress-back-end.herokuapp.com";
-let baseURL = "http://localhost:3003"
+let baseURL = "https://pixel-progress-back-end.herokuapp.com";
+// let baseURL = "http://localhost:3003"
 
 export default class App extends Component {
   constructor(props) {
